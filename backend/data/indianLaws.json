@@ -1,0 +1,82 @@
+{
+  "Consumer": [
+    { "name": "Consumer Protection Act, 2019", "section": "Section 2(7)", "description": "Defines consumer and their rights including right to seek redressal" },
+    { "name": "Consumer Protection Act, 2019", "section": "Section 35", "description": "Filing of complaints before District Commission" },
+    { "name": "Consumer Protection Act, 2019", "section": "Section 39", "description": "Appeal provisions against District Commission orders" },
+    { "name": "Sale of Goods Act, 1930", "section": "Section 16", "description": "Implied condition as to quality or fitness of goods" },
+    { "name": "E-Commerce Rules, 2020", "section": "Rule 4", "description": "Duties of e-commerce entities regarding returns and refunds" }
+  ],
+  "Labor": [
+    { "name": "Industrial Disputes Act, 1947", "section": "Section 2A", "description": "Dismissal or discharge of individual workman as industrial dispute" },
+    { "name": "Payment of Wages Act, 1936", "section": "Section 3", "description": "Responsibility for payment of wages" },
+    { "name": "Minimum Wages Act, 1948", "section": "Section 12", "description": "Fixing of minimum wages" },
+    { "name": "Employee Provident Fund Act, 1952", "section": "Section 6", "description": "Contributions and matters relating to EPF" },
+    { "name": "Payment of Gratuity Act, 1972", "section": "Section 4", "description": "Payment of gratuity on termination" }
+  ],
+  "Property": [
+    { "name": "Transfer of Property Act, 1882", "section": "Section 54", "description": "Sale and transfer of immovable property" },
+    { "name": "Registration Act, 1908", "section": "Section 17", "description": "Documents requiring compulsory registration" },
+    { "name": "RERA Act, 2016", "section": "Section 18", "description": "Builder obligations and buyer protection in real estate" },
+    { "name": "Specific Relief Act, 1963", "section": "Section 10", "description": "Cases for specific performance of contracts" },
+    { "name": "Indian Easements Act, 1882", "section": "Section 4", "description": "Rights of way and easement rights" }
+  ],
+  "Criminal": [
+    { "name": "Bharatiya Nyaya Sanhita, 2023", "section": "Section 303-308", "description": "Theft and extortion provisions (replaced IPC)" },
+    { "name": "Bharatiya Nyaya Sanhita, 2023", "section": "Section 351", "description": "Criminal intimidation" },
+    { "name": "Bharatiya Nagarik Suraksha Sanhita, 2023", "section": "Section 173", "description": "FIR filing and investigation procedures (replaced CrPC)" },
+    { "name": "Bharatiya Sakshya Adhiniyam, 2023", "section": "Section 61-65", "description": "Electronic evidence admissibility (replaced Evidence Act)" },
+    { "name": "SC/ST Prevention of Atrocities Act, 1989", "section": "Section 3", "description": "Offences and penalties for atrocities" }
+  ],
+  "Family": [
+    { "name": "Hindu Marriage Act, 1955", "section": "Section 13", "description": "Grounds for divorce" },
+    { "name": "Protection of Women from Domestic Violence Act, 2005", "section": "Section 12", "description": "Application for protection orders" },
+    { "name": "Hindu Succession Act, 1956", "section": "Section 6", "description": "Devolution of interest in coparcenary property" },
+    { "name": "Maintenance and Welfare of Parents Act, 2007", "section": "Section 4", "description": "Obligation to maintain parents and senior citizens" },
+    { "name": "Dowry Prohibition Act, 1961", "section": "Section 3", "description": "Penalty for giving or taking dowry" }
+  ],
+  "Cyber": [
+    { "name": "Information Technology Act, 2000", "section": "Section 43", "description": "Penalty for unauthorized access to computer systems" },
+    { "name": "Information Technology Act, 2000", "section": "Section 66", "description": "Computer related offences and hacking" },
+    { "name": "Information Technology Act, 2000", "section": "Section 66C", "description": "Identity theft using electronic signature or password" },
+    { "name": "Information Technology Act, 2000", "section": "Section 66D", "description": "Cheating by personation using computer resource" },
+    { "name": "IT Rules, 2021", "section": "Rule 3(1)(b)", "description": "Grievance redressal mechanism for social media intermediaries" }
+  ],
+  "Traffic": [
+    { "name": "Motor Vehicles Act, 1988", "section": "Section 177", "description": "General provision for punishment of traffic offences" },
+    { "name": "Motor Vehicles Act, 1988", "section": "Section 185", "description": "Driving by intoxicated persons" },
+    { "name": "Motor Vehicles Act, 1988", "section": "Section 184", "description": "Dangerous driving and penalties" },
+    { "name": "Motor Vehicles Act, 1988", "section": "Section 166", "description": "Application for compensation in accident cases" }
+  ],
+  "Environmental": [
+    { "name": "Environment Protection Act, 1986", "section": "Section 15", "description": "Penalty for contravention of environmental provisions" },
+    { "name": "Water (Prevention and Control of Pollution) Act, 1974", "section": "Section 24", "description": "Prohibition on disposal of polluting matter in water" },
+    { "name": "Air (Prevention and Control of Pollution) Act, 1981", "section": "Section 21", "description": "Restrictions on emission of air pollutants" },
+    { "name": "National Green Tribunal Act, 2010", "section": "Section 14", "description": "Tribunal jurisdiction for environmental disputes" },
+    { "name": "Noise Pollution Rules, 2000", "section": "Rule 3", "description": "Ambient air quality standards for noise" }
+  ],
+  "Government": [
+    { "name": "Right to Information Act, 2005", "section": "Section 6", "description": "Request for obtaining information from public authority" },
+    { "name": "Lokpal and Lokayuktas Act, 2013", "section": "Section 14", "description": "Complaint against public functionaries" },
+    { "name": "Prevention of Corruption Act, 1988", "section": "Section 7", "description": "Offence of taking gratification in public duty" },
+    { "name": "Administrative Tribunals Act, 1985", "section": "Section 14", "description": "Jurisdiction of Central Administrative Tribunal" }
+  ],
+  "Healthcare": [
+    { "name": "Consumer Protection Act, 2019", "section": "Section 2(42)", "description": "Medical services as 'service' under consumer law" },
+    { "name": "Clinical Establishments Act, 2010", "section": "Section 12", "description": "Conditions for registration of clinical establishments" },
+    { "name": "Indian Medical Council Act, 1956", "section": "Section 20A", "description": "Professional conduct and medical negligence" },
+    { "name": "Mental Healthcare Act, 2017", "section": "Section 18", "description": "Right to access mental healthcare" }
+  ],
+  "Education": [
+    { "name": "Right to Education Act, 2009", "section": "Section 3", "description": "Right of every child to free and compulsory education" },
+    { "name": "UGC Act, 1956", "section": "Section 12A", "description": "Powers of UGC regarding standards in universities" },
+    { "name": "AICTE Act, 1987", "section": "Section 10", "description": "Powers of AICTE for technical education" },
+    { "name": "Prevention of Unfair Practices in Technical/Medical Educational Institutions Act", "section": "", "description": "State-level acts addressing capitation fees and admission irregularity" }
+  ],
+  "Financial": [
+    { "name": "Reserve Bank of India Act, 1934", "section": "Section 35A", "description": "Directions by RBI to banking companies" },
+    { "name": "Banking Regulation Act, 1949", "section": "Section 21A", "description": "Rates of interest charged by banks" },
+    { "name": "SEBI Act, 1992", "section": "Section 11", "description": "Functions of SEBI to protect investor interests" },
+    { "name": "Insurance Act, 1938", "section": "Section 45", "description": "Policy limitations and claim settlement" },
+    { "name": "RBI Ombudsman Scheme, 2021", "section": "Clause 8", "description": "Grounds of complaint against banking services" }
+  ]
+}

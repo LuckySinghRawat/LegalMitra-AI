@@ -1,0 +1,128 @@
+export const CATEGORIES = [
+  'Consumer', 'Labor', 'Property', 'Criminal', 'Family',
+  'Cyber', 'Traffic', 'Environmental', 'Government',
+  'Healthcare', 'Education', 'Financial', 'Other'
+];
+
+export const STATUS_OPTIONS = [
+  { value: 'pending', label: 'Pending', color: '#f59e0b' },
+  { value: 'analyzed', label: 'Analyzed', color: '#818cf8' },
+  { value: 'in-progress', label: 'In Progress', color: '#60a5fa' },
+  { value: 'resolved', label: 'Resolved', color: '#34d399' },
+  { value: 'rejected', label: 'Rejected', color: '#f87171' },
+];
+
+export const URGENCY_LEVELS = [
+  { value: 'low', label: 'Low', color: '#34d399' },
+  { value: 'medium', label: 'Medium', color: '#f59e0b' },
+  { value: 'high', label: 'High', color: '#fb923c' },
+  { value: 'critical', label: 'Critical', color: '#f87171' },
+];
+
+export const CATEGORY_ICONS = {
+  Consumer: '🛒',
+  Labor: '👷',
+  Property: '🏠',
+  Criminal: '🚨',
+  Family: '👨‍👩‍👧‍👦',
+  Cyber: '💻',
+  Traffic: '🚗',
+  Environmental: '🌿',
+  Government: '🏛️',
+  Healthcare: '🏥',
+  Education: '📚',
+  Financial: '💰',
+  Other: '📋'
+};
+
+export const INDIAN_STATES = [
+  'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh',
+  'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand',
+  'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur',
+  'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab',
+  'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura',
+  'Uttar Pradesh', 'Uttarakhand', 'West Bengal',
+  'Delhi', 'Jammu & Kashmir', 'Ladakh', 'Puducherry', 'Chandigarh'
+];
+
+// Multilingual UI strings
+export const STRINGS = {
+  en: {
+    appName: 'LegalMitra AI',
+    tagline: 'Your AI-Powered Legal Companion',
+    dashboard: 'Dashboard',
+    submitComplaint: 'Submit Complaint',
+    myComplaints: 'My Complaints',
+    adminPanel: 'Admin Panel',
+    login: 'Login',
+    signup: 'Sign Up',
+    logout: 'Logout',
+    title: 'Title',
+    description: 'Description',
+    category: 'Category',
+    status: 'Status',
+    urgency: 'Urgency',
+    sentiment: 'Sentiment',
+    confidence: 'Confidence Score',
+    suggestedActions: 'Suggested Actions',
+    relevantLaws: 'Relevant Laws',
+    formalLetter: 'Formal Complaint Letter',
+    downloadPDF: 'Download PDF',
+    sendEmail: 'Send Email',
+    analyze: 'Analyze with AI',
+    generateLetter: 'Generate Letter',
+    submit: 'Submit',
+    cancel: 'Cancel',
+    loading: 'Loading...',
+    noComplaints: 'No complaints found',
+    voiceInput: 'Voice Input',
+    autoDetect: 'Auto-detect with AI',
+    total: 'Total',
+    pending: 'Pending',
+    analyzed: 'Analyzed',
+    resolved: 'Resolved',
+    heroTitle: 'AI-Powered Legal Complaint Platform',
+    heroDesc: 'Submit your complaints, get instant AI analysis with relevant Indian laws, and generate formal complaint letters — all in one platform.',
+    getStarted: 'Get Started',
+    learnMore: 'Learn More',
+  },
+  hi: {
+    appName: 'लीगलमित्र AI',
+    tagline: 'आपका AI-संचालित कानूनी सहायक',
+    dashboard: 'डैशबोर्ड',
+    submitComplaint: 'शिकायत दर्ज करें',
+    myComplaints: 'मेरी शिकायतें',
+    adminPanel: 'एडमिन पैनल',
+    login: 'लॉगिन',
+    signup: 'साइन अप',
+    logout: 'लॉगआउट',
+    title: 'शीर्षक',
+    description: 'विवरण',
+    category: 'श्रेणी',
+    status: 'स्थिति',
+    urgency: 'तात्कालिकता',
+    sentiment: 'भावना',
+    confidence: 'विश्वास स्कोर',
+    suggestedActions: 'सुझावित कार्रवाई',
+    relevantLaws: 'संबंधित कानून',
+    formalLetter: 'औपचारिक शिकायत पत्र',
+    downloadPDF: 'PDF डाउनलोड करें',
+    sendEmail: 'ईमेल भेजें',
+    analyze: 'AI से विश्लेषण करें',
+    generateLetter: 'पत्र बनाएं',
+    submit: 'जमा करें',
+    cancel: 'रद्द करें',
+    loading: 'लोड हो रहा है...',
+    noComplaints: 'कोई शिकायत नहीं मिली',
+    voiceInput: 'आवाज़ इनपुट',
+    autoDetect: 'AI से स्वतः पता लगाएं',
+    total: 'कुल',
+    pending: 'लंबित',
+    analyzed: 'विश्लेषित',
+    resolved: 'हल',
+    heroTitle: 'AI-संचालित कानूनी शिकायत मंच',
+    heroDesc: 'अपनी शिकायत दर्ज करें, भारतीय कानूनों के साथ तुरंत AI विश्लेषण प्राप्त करें, और औपचारिक शिकायत पत्र बनाएं — सब एक ही मंच पर।',
+    getStarted: 'शुरू करें',
+    learnMore: 'और जानें',
+  }
+};
