@@ -292,7 +292,7 @@ const SubmitComplaintPage = () => {
               </div>
 
               <div style={{ marginBottom: '24px' }}>
-                <label style={{ fontSize: '14px', fontWeight: '600', color: '#e2e8f0', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <label style={{ fontSize: '14px', fontWeight: '600', color: '#4e6480ff', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <MapPin size={16} style={{ color: '#818cf8' }} /> Location
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
@@ -309,8 +309,8 @@ const SubmitComplaintPage = () => {
                     onChange={(e) => setForm(f => ({ ...f, location: { ...f.location, state: e.target.value } }))}
                     id="complaint-state"
                   >
-                    <option value="">Select State</option>
-                    {INDIAN_STATES.map(s => <option key={s} value={s}>{s}</option>)}
+                    <option value="" style={{ background: '#334155', color: '#ffffff' }}>Select State</option>
+                    {INDIAN_STATES.map(s => <option key={s} value={s} style={{ background: '#334155', color: '#ffffff' }}>{s}</option>)}
                   </select>
                 </div>
                 {form.location.city && (
@@ -361,7 +361,7 @@ const SubmitComplaintPage = () => {
                 alignItems: 'flex-start',
               }}>
                 <Sparkles size={20} style={{ color: '#818cf8', flexShrink: 0, marginTop: '2px' }} />
-                <div style={{ fontSize: '13px', color: '#94a3b8', lineHeight: '1.6' }}>
+                <div style={{ fontSize: '13px', color: '#2068cdff', lineHeight: '1.6' }}>
                   After submission, AI will automatically <strong style={{ color: '#818cf8' }}>analyze your complaint</strong> — classify it, detect sentiment & urgency, check legal validity, and suggest relevant Indian laws and next steps.
                 </div>
               </div>

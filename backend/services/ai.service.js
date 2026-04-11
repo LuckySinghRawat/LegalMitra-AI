@@ -76,7 +76,16 @@ Important: Focus on Indian laws and legal framework. Be specific about sections 
     const analysis = JSON.parse(jsonStr);
     return analysis;
   } catch (error) {
-    console.error('AI Analysis Error:', error.message);
+    console.error('❌ AI Analysis Error:', error.message);
+    if (error.status) {
+      console.error(`   HTTP Status: ${error.status}`);
+    }
+    if (error.status === 401) {
+      console.error('   🔑 API KEY IS INVALID OR EXPIRED!');
+      console.error('   Check that your API key matches the AI_BASE_URL provider.');
+      console.error(`   Current BASE_URL: ${process.env.AI_BASE_URL}`);
+      console.error(`   Key prefix: ${(process.env.GROK_API_KEY || process.env.OPENAI_API_KEY || '').substring(0, 8)}...`);
+    }
     return getMockAnalysis(complaintText, category, language);
   }
 };
