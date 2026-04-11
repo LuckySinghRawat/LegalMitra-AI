@@ -62,10 +62,15 @@ Important: Focus on Indian laws and legal framework. Be specific about sections 
 
     const content = response.choices[0].message.content.trim();
 
-    // Parse JSON - handle potential markdown wrapping
+    // Parse JSON - handle potential markdown wrapping and conversational prefix/suffix
     let jsonStr = content;
-    if (jsonStr.startsWith('```')) {
-      jsonStr = jsonStr.replace(/```json?\n?/g, '').replace(/```/g, '').trim();
+    const firstBrace = jsonStr.indexOf('{');
+    const lastBrace = jsonStr.lastIndexOf('}');
+    
+    if (firstBrace !== -1 && lastBrace !== -1) {
+      jsonStr = jsonStr.substring(firstBrace, lastBrace + 1);
+    } else {
+      throw new Error('No JSON object found in response');
     }
 
     const analysis = JSON.parse(jsonStr);
