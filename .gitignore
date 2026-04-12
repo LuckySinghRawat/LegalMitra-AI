@@ -34,3 +34,7 @@ coverage/
 
 # Misc
 *.pdf
+
+# Uploaded files
+backend/uploads/*
+!backend/uploads/.gitkeep

@@ -15,16 +15,14 @@ const protect = async (req, res, next) => {
         return res.status(401).json({ error: 'User not found' });
       }
 
-      next();
+      return next();
     } catch (error) {
       console.error('Auth middleware error:', error.message);
       return res.status(401).json({ error: 'Not authorized, token failed' });
     }
   }
 
-  if (!token) {
-    return res.status(401).json({ error: 'Not authorized, no token provided' });
-  }
+  return res.status(401).json({ error: 'Not authorized, no token provided' });
 };
 
 // Admin only middleware

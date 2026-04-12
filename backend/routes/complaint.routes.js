@@ -10,6 +10,7 @@ const {
   getStats
 } = require('../controllers/complaint.controller');
 const { protect } = require('../middleware/auth');
+const upload = require('../config/upload');
 
 // All routes require authentication
 router.use(protect);
@@ -20,9 +21,10 @@ router.get('/stats', getStats);
 // @route POST /api/complaints
 router.post(
   '/',
+  upload.array('attachments', 5),
   [
     body('title').trim().notEmpty().withMessage('Title is required'),
-    body('description').trim().isLength({ min: 10 }).withMessage('Description must be at least 10 characters')
+    body('description').optional({ checkFalsy: true }).trim().isLength({ min: 10 }).withMessage('Description must be at least 10 characters')
   ],
   createComplaint
 );

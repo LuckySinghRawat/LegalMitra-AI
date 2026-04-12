@@ -6,7 +6,7 @@ import { CATEGORY_ICONS } from '../utils/constants';
 import {
   ArrowLeft, Brain, Scale, Shield, AlertTriangle, Gauge, FileText,
   Download, Mail, Sparkles, CheckCircle, Clock, ChevronDown, ChevronUp,
-  BookOpen, MapPin, Send, X
+  BookOpen, MapPin, Send, X, Paperclip, Image as ImageIcon, File
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -177,6 +177,78 @@ const ComplaintDetailPage = () => {
             <p style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '12px', fontSize: '13px', color: '#64748b' }}>
               <MapPin size={14} /> {complaint.location.city}{complaint.location.state ? `, ${complaint.location.state}` : ''}
             </p>
+          )}
+
+          {/* Attachments Section */}
+          {complaint.attachments && complaint.attachments.length > 0 && (
+            <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: '700', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px', color: '#e2e8f0' }}>
+                <Paperclip size={16} style={{ color: '#818cf8' }} /> Attachments
+                <span style={{
+                  fontSize: '11px', padding: '2px 10px', borderRadius: '20px',
+                  background: 'rgba(99,102,241,0.15)', color: '#a5b4fc', fontWeight: '600',
+                }}>{complaint.attachments.length}</span>
+              </h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+                {complaint.attachments.map((filePath, i) => {
+                  const fileName = filePath.split('/').pop();
+                  const ext = fileName.split('.').pop().toLowerCase();
+                  const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext);
+                  const isPdf = ext === 'pdf';
+                  const backendUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || '';
+                  const fullUrl = `${backendUrl}${filePath}`;
+
+                  if (isImage) {
+                    return (
+                      <a key={i} href={fullUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                        <div style={{
+                          width: '100px', height: '100px', borderRadius: '12px',
+                          overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)',
+                          cursor: 'pointer', transition: 'all 0.2s', position: 'relative',
+                        }}
+                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(99,102,241,0.5)'; e.currentTarget.style.transform = 'scale(1.05)'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.transform = 'scale(1)'; }}
+                        >
+                          <img src={fullUrl} alt={fileName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          <div style={{
+                            position: 'absolute', bottom: '0', left: '0', right: '0',
+                            background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
+                            padding: '4px 6px', fontSize: '10px', color: '#e2e8f0',
+                            overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                          }}>{fileName}</div>
+                        </div>
+                      </a>
+                    );
+                  }
+
+                  return (
+                    <a key={i} href={fullUrl} target="_blank" rel="noopener noreferrer" download style={{
+                      display: 'flex', alignItems: 'center', gap: '10px',
+                      padding: '10px 16px', borderRadius: '10px',
+                      background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
+                      textDecoration: 'none', color: '#e2e8f0', transition: 'all 0.2s',
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(99,102,241,0.4)'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; }}
+                    >
+                      <div style={{
+                        width: '36px', height: '36px', borderRadius: '8px',
+                        background: isPdf ? 'rgba(239,68,68,0.12)' : 'rgba(99,102,241,0.12)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        color: isPdf ? '#f87171' : '#818cf8', flexShrink: 0,
+                      }}>
+                        {isPdf ? <FileText size={18} /> : <File size={18} />}
+                      </div>
+                      <div style={{ minWidth: 0 }}>
+                        <p style={{ fontSize: '13px', fontWeight: '500', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '160px' }}>{fileName}</p>
+                        <p style={{ fontSize: '11px', color: '#64748b' }}>{ext.toUpperCase()} file</p>
+                      </div>
+                      <Download size={14} style={{ color: '#64748b', flexShrink: 0 }} />
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           )}
         </div>
 

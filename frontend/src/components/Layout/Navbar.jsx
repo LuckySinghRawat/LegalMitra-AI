@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { STRINGS } from '../../utils/constants';
-import { Menu, X, Globe, LogOut, LayoutDashboard, PlusCircle, Shield, Scale } from 'lucide-react';
+import { trackerAPI } from '../../api/axios';
+import { Menu, X, Globe, LogOut, LayoutDashboard, PlusCircle, Shield, Scale, CalendarClock } from 'lucide-react';
 
 const Navbar = () => {
   const { user, isAuthenticated, isAdmin, logout } = useAuth();
@@ -11,6 +12,15 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const t = STRINGS[lang];
+  const [upcomingCount, setUpcomingCount] = useState(0);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      trackerAPI.getUpcomingCount()
+        .then(res => setUpcomingCount(res.data.count))
+        .catch(() => {});
+    }
+  }, [isAuthenticated, location.pathname]);
 
   const handleLogout = () => {
     logout();
@@ -84,6 +94,18 @@ const Navbar = () => {
               </NavLink>
               <NavLink to="/submit" active={isActive('/submit')}>
                 <PlusCircle size={16} /> {t.submitComplaint}
+              </NavLink>
+              <NavLink to="/tracker" active={isActive('/tracker')}>
+                <CalendarClock size={16} /> Tracker
+                {upcomingCount > 0 && (
+                  <span style={{
+                    background: '#ef4444', color: 'white',
+                    fontSize: '10px', fontWeight: '700',
+                    padding: '1px 6px', borderRadius: '10px',
+                    minWidth: '18px', textAlign: 'center',
+                    lineHeight: '16px',
+                  }}>{upcomingCount}</span>
+                )}
               </NavLink>
               {isAdmin && (
                 <NavLink to="/admin" active={isActive('/admin')}>
@@ -191,6 +213,17 @@ const Navbar = () => {
               </Link>
               <Link to="/submit" onClick={() => setMobileOpen(false)} className="btn btn-secondary" style={{ justifyContent: 'flex-start' }}>
                 <PlusCircle size={16} /> {t.submitComplaint}
+              </Link>
+              <Link to="/tracker" onClick={() => setMobileOpen(false)} className="btn btn-secondary" style={{ justifyContent: 'flex-start', position: 'relative' }}>
+                <CalendarClock size={16} /> Tracker
+                {upcomingCount > 0 && (
+                  <span style={{
+                    background: '#ef4444', color: 'white',
+                    fontSize: '10px', fontWeight: '700',
+                    padding: '1px 6px', borderRadius: '10px',
+                    marginLeft: '4px',
+                  }}>{upcomingCount}</span>
+                )}
               </Link>
               {isAdmin && (
                 <Link to="/admin" onClick={() => setMobileOpen(false)} className="btn btn-secondary" style={{ justifyContent: 'flex-start' }}>
