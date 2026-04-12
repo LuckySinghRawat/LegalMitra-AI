@@ -179,6 +179,11 @@ body {
   color: var(--text-muted);
 }
 
+select.input-field option {
+  background: #2a2a3e;
+  color: #f1f5f9;
+}
+
 /* ===== Button Styles ===== */
 .btn {
   display: inline-flex;

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { STRINGS } from '../../utils/constants';
-import { Menu, X, Globe, LogOut, LayoutDashboard, PlusCircle, Shield, Scale } from 'lucide-react';
+import { Menu, X, Globe, LogOut, LayoutDashboard, PlusCircle, Shield, Scale, Search } from 'lucide-react';
 
 const Navbar = () => {
   const { user, isAuthenticated, isAdmin, logout } = useAuth();
@@ -84,6 +84,9 @@ const Navbar = () => {
               </NavLink>
               <NavLink to="/submit" active={isActive('/submit')}>
                 <PlusCircle size={16} /> {t.submitComplaint}
+              </NavLink>
+              <NavLink to="/find-advocate" active={isActive('/find-advocate')}>
+                <Search size={16} /> Find Advocate
               </NavLink>
               {isAdmin && (
                 <NavLink to="/admin" active={isActive('/admin')}>
@@ -191,6 +194,9 @@ const Navbar = () => {
               </Link>
               <Link to="/submit" onClick={() => setMobileOpen(false)} className="btn btn-secondary" style={{ justifyContent: 'flex-start' }}>
                 <PlusCircle size={16} /> {t.submitComplaint}
+              </Link>
+              <Link to="/find-advocate" onClick={() => setMobileOpen(false)} className="btn btn-secondary" style={{ justifyContent: 'flex-start' }}>
+                <Search size={16} /> Find Advocate
               </Link>
               {isAdmin && (
                 <Link to="/admin" onClick={() => setMobileOpen(false)} className="btn btn-secondary" style={{ justifyContent: 'flex-start' }}>

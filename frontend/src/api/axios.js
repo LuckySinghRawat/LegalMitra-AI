@@ -70,4 +70,11 @@ export const adminAPI = {
   updateComplaint: (id, data) => api.patch(`/admin/complaints/${id}`, data),
 };
 
+// ===== Lawyers API =====
+export const lawyersAPI = {
+  search: (params) => api.get('/lawyers', { params }),
+  detectCategory: (issue) => api.post('/lawyers/detect-category', { issue }),
+  getCities: () => api.get('/lawyers/cities'),
+};
+
 export default api;

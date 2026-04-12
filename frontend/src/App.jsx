@@ -7,6 +7,7 @@ import DashboardPage from './pages/DashboardPage';
 import SubmitComplaintPage from './pages/SubmitComplaintPage';
 import ComplaintDetailPage from './pages/ComplaintDetailPage';
 import AdminPage from './pages/AdminPage';
+import FindAdvocatePage from './pages/FindAdvocatePage';
 
 // Protected route wrapper
 const ProtectedRoute = ({ children }) => {
@@ -45,6 +46,9 @@ function App() {
       } />
       <Route path="/admin" element={
         <ProtectedRoute><AdminRoute><AdminPage /></AdminRoute></ProtectedRoute>
+      } />
+      <Route path="/find-advocate" element={
+        <ProtectedRoute><FindAdvocatePage /></ProtectedRoute>
       } />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

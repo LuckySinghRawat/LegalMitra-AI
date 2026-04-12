@@ -49,6 +49,7 @@ app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/complaints', require('./routes/complaint.routes'));
 app.use('/api/ai', require('./routes/ai.routes'));
 app.use('/api/admin', require('./routes/admin.routes'));
+app.use('/api/lawyers', require('./routes/lawyer.routes'));
 
 // Health check
 app.get('/api/health', (req, res) => {
