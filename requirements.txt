@@ -1,0 +1,24 @@
+Prerequisites:
+- Node.js (v18 or higher recommended)
+- MongoDB (Local installation or MongoDB Atlas Cloud)
+- Git
+
+Backend Dependencies (found in backend/package.json):
+- express: Web framework for Node.js
+- mongoose: MongoDB object modeling
+- cors: For Cross-Origin Resource Sharing
+- dotenv: To load environment variables from a .env file
+- multer: For handling file uploads
+- helmet: For securing HTTP headers
+- express-rate-limit: Basic rate-limiting middleware
+- (And other packages defined in backend/package.json. Install via 'npm install')
+
+Frontend Dependencies (found in frontend/package.json):
+- react & react-dom: Core UI library
+- vite: Frontend build tool
+- react-router-dom: Client-side routing
+- axios: Promise-based HTTP client for API requests
+- lucide-react: Icon library
+- (And other packages defined in frontend/package.json. Install via 'npm install')
+
+Note: In a typical Node.js working environment, you do not use 'pip install -r requirements.txt' like Python. Instead, you change directory into 'backend' and 'frontend' and run 'npm install'.

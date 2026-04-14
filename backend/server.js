@@ -4,7 +4,6 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const path = require('path');
 const dotenv = require('dotenv');
-const path = require('path');
 const connectDB = require('./config/db');
 
 // Load environment variables - use absolute path so it works regardless of cwd
@@ -99,7 +98,7 @@ app.listen(PORT, () => {
     console.log(`🧠 AI Model: ${process.env.AI_MODEL || 'default'}`);
   } else {
     console.warn('⚠️  NO AI API key found! AI features will use mock/fallback responses.');
-    console.warn('   Set OPENAI_API_KEY or GROK_API_KEY in your .env file.');
+    console.warn('   Set API_KEY in your .env file.');
   }
 });
 

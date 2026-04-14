@@ -1,4 +1,4 @@
 @echo off
-cd /d "c:\Users\VASHNAVI\OneDrive\Desktop\hackathon\LegalMitra-AI\backend"
+cd /d "%~dp0backend"
 node test-webhook.js
 pause

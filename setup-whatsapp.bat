@@ -5,7 +5,7 @@ echo ============================================
 echo.
 
 echo Step 1: Starting WhatsApp Bot Server...
-cd /d "c:\Users\VASHNAVI\OneDrive\Desktop\hackathon\LegalMitra-AI\backend"
+cd /d "%~dp0backend"
 start cmd /k "node whatsapp.js"
 
 echo.
