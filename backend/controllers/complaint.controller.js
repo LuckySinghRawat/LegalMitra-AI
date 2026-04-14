@@ -12,13 +12,35 @@ exports.createComplaint = async (req, res, next) => {
 
     const { title, description, category, language, location } = req.body;
 
+    // Handle file attachments from multer
+    let attachments = [];
+    if (req.files && req.files.length > 0) {
+      attachments = req.files.map(file => `/uploads/${file.filename}`);
+    }
+
+    // Ensure description has a value (file-only uploads may have no description)
+    const finalDescription = description || (attachments.length > 0
+      ? `Complaint submitted via file upload. ${attachments.length} file(s) attached.`
+      : '');
+
+    // Parse location if it comes as a JSON string (from FormData)
+    let parsedLocation = location;
+    if (typeof location === 'string') {
+      try {
+        parsedLocation = JSON.parse(location);
+      } catch (e) {
+        parsedLocation = {};
+      }
+    }
+
     const complaint = await Complaint.create({
       user: req.user._id,
       title,
-      description,
+      description: finalDescription,
       category: category || 'Other',
       language: language || req.user.language || 'en',
-      location: location || req.user.location || {}
+      location: parsedLocation || req.user.location || {},
+      attachments
     });
 
     res.status(201).json({

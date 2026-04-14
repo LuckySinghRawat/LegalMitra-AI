@@ -376,3 +376,75 @@ Yours faithfully,
 ${userName}
 Date: ${date}`;
 }
+
+// Chat with AI for WhatsApp conversations
+exports.chatWithAI = async (message, context = 'general', language = 'en') => {
+  const client = getClient();
+
+  if (!client) {
+    console.log('⚠️ No AI API key found, returning mock chat response');
+    return getMockChatResponse(message, language);
+  }
+
+  try {
+    const isHindi = language === 'hi';
+    const systemPrompt = isHindi
+      ? `आप एक कानूनी सहायक AI हैं। आप भारतीय कानूनों के बारे में सलाह देते हैं और शिकायतों में मदद करते हैं। हमेशा उपयोगकर्ता को कानूनी सलाह न दें, बल्कि उन्हें सही दिशा में मार्गदर्शन करें। उत्तर संक्षिप्त और सहायक रखें।`
+      : `You are a legal assistant AI. You provide guidance on Indian laws and help with complaints. Never give direct legal advice, but guide users in the right direction. Keep responses concise and helpful.`;
+
+    const userPrompt = isHindi
+      ? `उपयोगकर्ता का संदेश: "${message}"\n\nसंदर्भ: ${context}\n\nकृपया सहायक उत्तर दें।`
+      : `User message: "${message}"\n\nContext: ${context}\n\nPlease provide a helpful response.`;
+
+    const response = await client.chat.completions.create({
+      model: AI_MODEL,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userPrompt }
+      ],
+      max_tokens: 500,
+      temperature: 0.7
+    });
+
+    const aiResponse = response.choices[0]?.message?.content?.trim();
+
+    if (!aiResponse) {
+      throw new Error('No response from AI');
+    }
+
+    return {
+      message: aiResponse,
+      language: language,
+      context: context,
+      timestamp: new Date().toISOString()
+    };
+
+  } catch (error) {
+    console.error('AI Chat Error:', error);
+    return getMockChatResponse(message, language);
+  }
+};
+
+// Mock chat response for demo/fallback
+function getMockChatResponse(message, language) {
+  const isHindi = language === 'hi';
+  const responses = isHindi ? {
+    greeting: 'नमस्ते! मैं LegalMitra AI हूँ। मैं आपकी कानूनी शिकायतों में मदद कर सकता हूँ। कृपया अपनी समस्या बताएँ।',
+    help: 'मैं आपकी कानूनी शिकायत दर्ज करने में मदद कर सकता हूँ। आप हमारे वेब ऐप पर भी जा सकते हैं: http://localhost:5173',
+    default: 'आपकी शिकायत के बारे में और जानकारी देने के लिए धन्यवाद। कृपया हमारे वेब प्लेटफॉर्म पर जाएँ: http://localhost:5173'
+  } : {
+    greeting: 'Hello! I\'m LegalMitra AI. I can help you with legal complaints. Please tell me about your issue.',
+    help: 'I can help you file a legal complaint. You can also visit our web app at: http://localhost:5173',
+    default: 'Thank you for sharing your complaint details. Please visit our web platform for more assistance: http://localhost:5173'
+  };
+
+  const messageLower = message.toLowerCase();
+
+  if (messageLower.includes('hello') || messageLower.includes('hi') || messageLower.includes('नमस्ते')) {
+    return { message: responses.greeting, language, context: 'greeting', timestamp: new Date().toISOString() };
+  } else if (messageLower.includes('help') || messageLower.includes('मदद')) {
+    return { message: responses.help, language, context: 'help', timestamp: new Date().toISOString() };
+  } else {
+    return { message: responses.default, language, context: 'general', timestamp: new Date().toISOString() };
+  }
+}

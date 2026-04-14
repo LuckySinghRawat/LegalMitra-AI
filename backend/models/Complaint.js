@@ -64,15 +64,50 @@ const complaintSchema = new mongoose.Schema({
     suggestedAuthority: { type: String, default: '' }
   },
   attachments: [{ type: String }],
-  adminNotes: { type: String, default: '' }
+  adminNotes: { type: String, default: '' },
+
+  // ─── Tracker Fields ────────────────────────────────────
+  scheduledDate: {
+    type: Date,
+    default: null
+  },
+  statusHistory: [{
+    status: { type: String, required: true },
+    changedAt: { type: Date, default: Date.now },
+    notes: { type: String, default: '' }
+  }],
+  notes: [{
+    text: { type: String, required: true },
+    addedAt: { type: Date, default: Date.now }
+  }]
 }, {
   timestamps: true
 });
 
-// Index for search
+// Auto-log status changes to statusHistory
+complaintSchema.pre('save', function (next) {
+  if (this.isNew) {
+    // Log initial status on creation
+    this.statusHistory.push({
+      status: this.status,
+      changedAt: new Date(),
+      notes: 'Complaint created'
+    });
+  } else if (this.isModified('status')) {
+    this.statusHistory.push({
+      status: this.status,
+      changedAt: new Date(),
+      notes: ''
+    });
+  }
+  next();
+});
+
+// Indexes
 complaintSchema.index({ title: 'text', description: 'text' });
 complaintSchema.index({ user: 1, createdAt: -1 });
 complaintSchema.index({ status: 1 });
 complaintSchema.index({ category: 1 });
+complaintSchema.index({ scheduledDate: 1 });
 
 module.exports = mongoose.model('Complaint', complaintSchema);

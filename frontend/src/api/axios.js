@@ -46,7 +46,15 @@ export const authAPI = {
 
 // ===== Complaints API =====
 export const complaintsAPI = {
-  create: (data) => api.post('/complaints', data),
+  create: (data) => {
+    // If data is FormData (file uploads), let axios set multipart Content-Type with boundary
+    if (data instanceof FormData) {
+      return api.post('/complaints', data, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+    }
+    return api.post('/complaints', data);
+  },
   getAll: (params) => api.get('/complaints', { params }),
   getById: (id) => api.get(`/complaints/${id}`),
   updateStatus: (id, status) => api.patch(`/complaints/${id}/status`, { status }),
@@ -75,6 +83,15 @@ export const lawyersAPI = {
   search: (params) => api.get('/lawyers', { params }),
   detectCategory: (issue) => api.post('/lawyers/detect-category', { issue }),
   getCities: () => api.get('/lawyers/cities'),
+};
+
+// ===== Tracker API =====
+export const trackerAPI = {
+  getGrouped: () => api.get('/tracker/grouped'),
+  getTimeline: (id) => api.get(`/tracker/timeline/${id}`),
+  addNote: (id, text) => api.post(`/tracker/${id}/notes`, { text }),
+  setSchedule: (id, scheduledDate) => api.patch(`/tracker/${id}/schedule`, { scheduledDate }),
+  getUpcomingCount: () => api.get('/tracker/upcoming-count'),
 };
 
 export default api;
